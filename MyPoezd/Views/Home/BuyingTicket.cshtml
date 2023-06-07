@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MyPoezd.Models.ViewModels.RoutesView>
+
+<form method="post" asp-controller="Home" asp-action="BuyingTicket">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-secondary pl-3">Поиск билета</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <style>
+                    .vl {
+                        border-left: 1px solid grey;
+                        height: 100px;
+                        width: 10px;
+                        position: absolute;
+                        left: 60%;
+                        margin-left: -3px;
+                        top: 10px;
+                    }
+                </style>
+
+                @{
+                    foreach (var item in Model)
+                    {
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-2">
+                                    @if (item.Train != null)
+                                    {
+                                        <span>Поезд: @item.Train.Name</span>
+                                    }
+                                </div>
+                                <div class="row col-12">
+                                    <div class="col-2" style="font-size: 12px">@item.StringDeparutureDate</div>
+                                    <div class="col-3"><a style="font-size: 13px">Время пути</a></div>
+                                    <div class="col-3" style="font-size: 12px">@item.StringArrivalDate</div>
+                                    <div class="vl"></div>
+
+                                        <div class="col-1" style="font-size: 14px">Плацкарт</div>
+                                        <div class="col-2">
+                                        <a target="_blank" style="text-decoration: none; font-size: 15px; color: #97a4e5; font-weight: bold" asp-controller="Home" asp-action="WagonsList" asp-route-id="@item.Route.Id" asp-route-category="Плацкарт" asp-route-train="@item.Train.Id" asp-route-depcity="@item.DepartureCity" asp-route-arcity="@item.ArrivalCity" asp-route-price=" @item.Route.PriceEconom.ToString()">
+                                            @item.Route.PriceEconom.ToString("0.00") p.
+                                        </a>
+                                        </div>
+                                </div>
+                                <div class="row col-12">
+                                    <div class="col-2" style="font-weight: bold; font-size: 30px;">@item.DepartureTime</div>
+                                    <div class="col-3 text-left mt-2"><a style="font-size: 20px;">@item.TravelTime</a></div>
+                                    <div class="col-3" style="font-weight: bold; font-size: 30px;">@item.ArrivalTime</div>
+                                    <div class="col-1" style="font-size: 14px">Купе</div>
+                                    <div class="col-2">
+                                        <a target="_blank" style="text-decoration: none; font-size: 15px; color: #97a4e5; font-weight: bold" asp-controller="Home" asp-action="WagonsList" asp-route-id="@item.Route.Id" asp-route-category="Купе" asp-route-train="@item.Train.Id" asp-route-price=" @item.Route.PriceCoupe.ToString()" asp-route-depcity="@item.DepartureCity" asp-route-arcity="@item.ArrivalCity">
+                                            @item.Route.PriceCoupe.ToString("0.00") p.
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                <div class="row col-12">
+                                    <div class="col-2" style="font-weight: bold; font-size: 12px">@item.DepartureCity</div>
+                                    <div class="col-3"></div>
+                                    <div class="col-3" style="font-weight: bold; font-size: 12px">@item.ArrivalCity</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <br />
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>
+</form>

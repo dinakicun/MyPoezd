@@ -1,0 +1,320 @@
+﻿@model MyPoezd.Models.ViewModels.PlacesView
+
+
+<form method="post" asp-controller="Home" asp-action="Places">
+   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<script src="~/js/site.js" asp-append-version="true"></script>
+    @{
+        var place = Model;
+        @if (place.CountOfPlaces == "54")
+        {
+            <div class="wagon">
+                <div class="coupe">
+        <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)" data-seat-number="2">
+                            <a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="2">2</a>
+
+        </div>
+                    <div class="seat" onclick="changeColor(this)" data-seat-number="4">
+                            <a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="4">4</a>
+                    </div>
+        </div>
+        <div class="seats-container">
+            <div class="seat" onclick="changeColor(this)">
+                        <a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="1">1</a>
+                </div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="3">3</a></div>
+        </div>
+        <div class="side-seats-container">
+                    <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="54">54</a></div>
+                    <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="53">53</a></div>
+        </div>
+       </div>
+        <div class="coupe">
+            <div class="seats-container">
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="6">6</a></div>
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="8">8</a></div>
+            </div>
+            <div class="seats-container">
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="5">5</a></div>
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="7">7</a></div>
+            </div>
+            <div class="side-seats-container">
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="52">52</a></div>
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="51">51</a></div>
+            </div>
+        </div>
+        <div class="coupe">
+            <div class="seats-container">
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="10">10</a></div>
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces"  asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="12">12</a></div>
+            </div>
+            <div class="seats-container">
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="9">9</a></div>
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="11">11</a></div>
+            </div>
+            <div class="side-seats-container">
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="50">50</a></div>
+                    <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"   asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="49">49</a></div>
+            </div>
+        </div>
+        <div class="coupe">
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="14">14</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="16">16</a></div>
+            </div>
+            <div class="seats-container">
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="13">13</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="15">15</a></div>
+            </div>
+            <div class="side-seats-container">
+                    <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="48">48</a></div>
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="47">47</a></div>
+            </div>
+        </div>
+        <div class="coupe">
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="18">18</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="20">20</a></div>
+            </div>
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="17">17</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="19">19</a></div>
+            </div>
+            <div class="side-seats-container">
+                    <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="46">46</a></div>
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="45">45</a></div>
+            </div>
+        </div>
+        <div class="coupe">
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="22">22</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="24">24</a></div>
+            </div>
+            <div class="seats-container">
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces"  asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="21">21</a></div>
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="23">23</a></div>
+            </div>
+            <div class="side-seats-container">
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-action="Places" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="44">44</a></div>
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-action="Places" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="43">43</a></div>
+            </div>
+        </div>
+        <div class="coupe">
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="26">26</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="28">28</a></div>
+            </div>
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="25">25</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="27">27</a></div>
+            </div>
+            <div class="side-seats-container">
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces"  asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="42">42</a></div>
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="41">41</a></div>
+            </div>
+        </div>
+        <div class="coupe">
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="30">30</a></div>
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="32">32</a></div>
+            </div>
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="29">29</a></div>
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="31">31</a></div>
+            </div>
+            <div class="side-seats-container">
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="40">40</a></div>
+                        <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="39">39</a></div>
+            </div>
+        </div>
+        <div class="coupe">
+            <div class="seats-container">
+                    <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="34">34</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="36">36</a></div>
+            </div>
+            <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="33">33</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="35">35</a></div>
+            </div>
+            <div class="side-seats-container">
+                    <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="38">38</a></div>
+                    <div class="side-seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="37">37</a></div>
+            </div>
+        </div>
+    </div>
+    }
+        @if (place.CountOfPlaces == "32")
+        {
+            <div class="wagon">
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)" data-seat-number="2">
+                            <a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="2">2</a>
+
+                        </div>
+                        <div class="seat" onclick="changeColor(this)" data-seat-number="4">
+                            <a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="4">4</a>
+                        </div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)">
+                            <a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="1">1</a>
+                        </div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="3">3</a></div>
+                    </div>
+                </div>
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="6">6</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="8">8</a></div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="5">5</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="7">7</a></div>
+                    </div>
+                </div>
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="10">10</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="12">12</a></div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="9">9</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="11">11</a></div>
+                    </div>
+                </div>
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="14">14</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="16">16</a></div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="13">13</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="15">15</a></div>
+                    </div>
+                </div>
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="18">18</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="20">20</a></div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="17">17</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="19">19</a></div>
+                    </div>
+                </div>
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="22">22</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="24">24</a></div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="21">21</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="23">23</a></div>
+                    </div>
+                </div>
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="26">26</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places"  asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="28">28</a></div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="25">25</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="27">27</a></div>
+                    </div>
+                </div>
+                <div class="coupe">
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="30">30</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="32">32</a></div>
+                    </div>
+                    <div class="seats-container">
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="29">29</a></div>
+                        <div class="seat" onclick="changeColor(this)"><a asp-controller="Home" asp-action="Places" asp-route-routeId="@place.RouteId" asp-route-count="@place.CountOfPlaces" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-seatNumber="31">31</a></div>
+                    </div>
+                </div> 
+            </div>
+        }
+        <div class="border p-3">
+
+            <div class="form-group row">
+                <h2 class="text-secondary pl-3">Выберите место:</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+
+                    <style>
+                        .vl {
+                        border-left: 1px solid grey;
+                        height: 100px;
+                        width: 10px;
+                        position: absolute;
+                        left: 60%;
+                        margin-left: -3px;
+                        top: 10px;
+                        }
+                        a{
+                            text-decoration: none;
+                            color: black;
+                        }
+                        #aa{
+                            text-decoration: none;
+                            color: #97a4e5"
+                        }
+                    </style>
+
+                    @if (place != null)
+                    {
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                    <span>Поезд: @place.TrainName</span>
+                                </div>
+                                <div class="row col-12">
+                                    <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                        <span> Номер вагона: @place.WagonName </span>
+                                    </div>
+                                    <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                        <span> Тип вагона: @place.WagonTypeName </span>
+                                    </div>
+                                   @if(place.PlaceName != null){
+                                        
+                                        @if(place.Status != null){
+                                            <div class="col-2" style="font-weight: bold; font-size: 15px" id="placeContainer">
+                                                <span> Номер места: @place.PlaceName </span>
+                                            </div>
+                                        <div class="col-2" style="font-weight: bold; font-size: 15px" id="placeContainer">
+                                            <span> Статус: @place.Status </span>
+                                        </div>
+                                            <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                                <span>  Цена: @place.Price </span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-2" style="font-weight: bold; font-size: 15px" id="placeContainer">
+                                                <span> Номер места: @place.PlaceName </span>
+                                            </div>
+                                            <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                                <span>  Цена: @place.Price </span>
+                                            </div>
+                                            <div class="col-2" id="aa" style="font-weight: bold; font-size: 15px; color: #97a4e5">
+                                                <a asp-controller="Home" asp-action="Credit"  asp-route-routeId="@place.RouteId" asp-route-trainId="@place.TrainId" asp-route-wagonId="@place.WagonId" asp-route-price="@place.Price" asp-route-category="@place.WagonTypeName" asp-route-placeName="@place.PlaceName">Купить</a>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <br />
+                    }
+                    
+            </div>
+
+        </div>
+    </div>
+    }
+</form>
+

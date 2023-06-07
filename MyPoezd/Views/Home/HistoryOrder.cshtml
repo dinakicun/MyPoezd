@@ -1,0 +1,37 @@
+﻿@model List<MyPoezd.Models.ViewModels.OrderView>
+
+<form method="post" asp-action="HistoryOrder">
+@foreach (var item in Model)
+{
+    <div class="border p-3" style="margin-top: 20px">
+
+        <div class="row">
+            <div class="col-6">
+                <input type="hidden" asp-for="@item.RouteId" class="form-control" />
+                <input type="hidden" asp-for="@item.TrainId" class="form-control"/>
+                <input type="hidden" asp-for="@item.WagonId" class="form-control" />
+                <input type="hidden" asp-for="@item.Price" class="form-control"/>
+                <input type="hidden" asp-for="@item.WagonTypeName" class="form-control"/>
+                <input type="hidden" asp-for="@item.PlaceId" class="form-control" />
+                <div class="form-group row">
+                    <div class="col-12">
+                        <h6>Номер билета: @item.TicketId</h6>
+                        <h5>Город отправления: @item.Route.DepartureCity.Name</h5>
+                        <h5>Город прибытия: @item.Route.ArrivalCity.Name</h5>
+                        <h5>Место: @item.WagonTypeName</h5>
+                        <br/>
+                        <h5>Дата и время отправления: @item.Route.DepartureDate</h5>
+                        <h5>Дата и время прибытия: @item.Route.ArrivalDate</h5>
+                        <h5>Номер отправления: @item.Route.Id</h5>
+                        <h5>Номер места: @item.PlaceName</h5>
+                        <br/>
+                        <h5>Стоимость билета: @item.Price</h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br/>
+}
+</form>

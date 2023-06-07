@@ -1,0 +1,38 @@
+﻿@model MyPoezd.Models.City
+
+
+ <form method="post" asp-action="CitiesCreate">
+     <div class="border p-3">
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="form-group row">
+            <h2 class="text-secondary pl-3">Добавление города</h2>
+         </div>
+         <div class = "row">
+             <div class="col-8"> 
+
+                 <div class = "form-group row">
+                     <div class="col-4">
+                         <label asp-for="Name">Название города</label>
+                     </div>
+                     <div class="col-8">
+                         <input asp-for="Name" class="form-control"/>
+                         <span asp-validation-for="Name" class="text-danger"></span>
+                     </div>
+                 </div>
+
+                 <div class = "form-group row">
+                     <div class="col-8 offset-4 row">
+
+                         <div class="col">
+                             <input type="submit" class="btn btn-info w-100" value="Добавить"/>
+                         </div>
+                         <br/>
+                         <div class="col">
+                             <a asp-action="CitiesIndex" class="btn btn-success w-100"><i class="fa-solid fa-arrow-right-from-bracket"> &nbsp; </i>Назад</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </form>

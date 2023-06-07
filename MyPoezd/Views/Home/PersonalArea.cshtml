@@ -1,0 +1,83 @@
+﻿@model MyPoezd.Models.User
+<style>
+    /* Стили для страницы */
+    .profile1 {
+        font-family: 'Literata', serif;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #97a4e5;
+    }
+
+    .profile {
+        border: 1px solid ##97a4e5;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="col-12">
+        <a asp-controller="Cities" asp-action="CitiesIndex" class="btn mx-2" style="background-color:#97a4e5; margin-top: 10px">
+            <i class="fa-solid fa-trash-can"></i> Города
+        </a>
+    </div>
+    <div class="col-12 mt-1">
+        <a asp-controller="Trains" asp-action="TrainsIndex" class="btn mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> Поезда
+        </a>
+    </div>
+    <div class="col-12 mt-1">
+        <a asp-controller="Routes" asp-action="RoutesIndex" class="btn mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> Маршруты
+        </a>
+    </div>
+    <div class="col-12 mt-1">
+        <a asp-controller="Tickets" asp-action="TicketsIndex" class="btn mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> Билеты
+        </a>
+    </div>
+    <div class="col-12 mt-1">
+        <a asp-controller="Wagons" asp-action="WagonsIndex" class="btn mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> Вагоны
+        </a>
+    </div>
+}
+
+@if (User.IsInRole("User"))
+{
+    <div class="col-12 mt-1">
+        <a asp-controller="Home" asp-action="HistoryOrder" class="btn  mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> История билетов
+        </a>
+    </div>
+
+    <div class="col-12 mt-1">
+        <a asp-controller="Home" asp-action="UpdateUser" class="btn mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> Изменить личные данные
+        </a>
+    </div>
+    <div class="col-12 mt-1">
+        <a asp-controller="Home" asp-action="UpdatePassword" class="btn mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> Изменить пароль
+        </a>
+    </div>
+
+    <div class="col-12 mt-1">
+        <a asp-controller="Home" asp-action="Logout" class="btn mx-2" style="background-color:#97a4e5">
+            <i class="fa-solid fa-trash-can"></i> Выйти
+        </a>
+    </div>
+@*    <div class="profile1">
+        <h1>Личный кабинет</h1>
+
+        <div class="profile">
+            <h2>Мои данные</h2>
+            <p><strong>Имя: @Model.Name</strong> </p>
+            <p><strong>Фамилия: @Model.Surname</strong></p>
+            <p><strong>Телефон: @Model.NumberPhone</strong></p>
+        </div>
+    </div>*@
+}

@@ -1,0 +1,128 @@
+﻿@model MyPoezd.Models.ViewModels.RoutesView
+
+
+ <form method="post" asp-action="RoutesCreate">
+    <div class="border p-3" style="margin-top:10px">
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="form-group row">
+             <h2 class="text-secondary pl-3">Добавление расписания</h2>
+         </div>
+         <div class = "row">
+             <div class="col-8"> 
+
+                 <div class = "form-group row">
+                     <div class="col-4">
+                         <label asp-for="Route.DepartureDate">Дата отправки</label>
+                     </div>
+                     <div class="col-8">
+                         <input type="date" asp-for="Route.DepartureDate" class="form-control" />
+                     </div>
+                 </div>
+                 <div class = "form-group row">
+                     <div class="col-4">
+                         <label asp-for="DepartureTime">Время отправки</label>
+                     </div>
+                     <div class="col-8">
+                         <input type="time" asp-for="DepartureTime" class="form-control" />
+                     </div>
+                 </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Route.ArrivalDate">Дата прибытия</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="date" asp-for="Route.ArrivalDate" class="form-control" />
+                    </div>
+                </div>
+                 <div class="form-group row">
+                     <div class="col-4">
+                         <label asp-for="ArrivalTime">Время прибытия</label>
+                     </div>
+                     <div class="col-8">
+                         <input type="time" asp-for="ArrivalTime" class="form-control" />
+                     </div>
+                 </div>
+
+                 <div class="form-group row">
+                     <div class="col-4">
+                         <label asp-for="Route.PriceEconom">Цена плацкарт</label>
+                     </div>
+                     <div class="col-8">
+                        <input asp-for="Route.PriceEconom" class="form-control" />
+                     </div>
+                 </div>
+
+                 <div class="form-group row">
+                     <div class="col-4">
+                        <label asp-for="Route.PriceCoupe">Цена купе</label>
+                     </div>
+                     <div class="col-8">
+                        <input asp-for="Route.PriceCoupe" class="form-control" />
+                     </div>
+                 </div>
+                 
+                 <div class = "form-group row">
+                     <div class="col-4">
+                         <label asp-for="@Model.DepartureCity">Город отправки</label>
+                     </div>
+                     <div class="col-8">
+                        <select asp-for="@Model.DepartureCity" class="form-control">
+                             @{
+                                 foreach (var item in Model.Cities)
+                                 {
+                                     <option>@item.Name</option>
+                                 }
+                             }
+                         </select>
+                     </div>
+                 </div>
+                 
+                 <div class = "form-group row">
+                     <div class="col-4">
+                         <label asp-for="@Model.ArrivalCity">Город прибытия</label>
+                     </div>
+                     <div class="col-8">
+                         <select asp-for="@Model.ArrivalCity" class="form-control">
+                             @{
+                                 foreach (var item in Model.Cities)
+                                 {
+                                     <option>@item.Name</option>
+                                 }
+                             }
+                         </select>
+                     </div>
+                 </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="@Model.TrainName">Поезд</label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="@Model.TrainName" class="form-control">
+                            @{
+                                foreach (var item in Model.Trains)
+                                {
+                                    <option>@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                 
+
+                 <div class = "form-group row">
+                     <div class="col-8 offset-4 row">
+
+                         <div class="col">
+                            <input type="submit" class="btn w-100" style="background-color:#97a4e5; margin-top:10px" value="Добавить" />
+                         </div>
+                         <br/>
+                         <div class="col">
+                            <a asp-action="RoutesIndex" class="btn w-100" style="background-color:#97a4e5; margin-top:10px"><i class="fa-solid fa-arrow-right-from-bracket"> &nbsp; </i>Назад</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </form>

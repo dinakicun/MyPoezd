@@ -1,0 +1,46 @@
+﻿@model MyPoezd.Models.ViewModels.OrderView
+<form method="post" asp-action="Credit">
+<div class="container">
+        <h1 style="color:#97a4e5">Покупка билета</h1>
+
+    <!-- Информация о билете -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Информация о билете</h5>
+            <p class="card-text">Маршрут:</p>
+            <p class="card-text">Дата и время отправления: @Model.Route.DepartureDate</p>
+            <p class="card-text">Дата и время приезда: @Model.Route.ArrivalDate</p>
+            <p class="card-text">Номер поезда: @Model.TrainName</p>
+            <p class="card-text">Номер вагона: @Model.WagonName</p>
+            <p class="card-text">Тип вагона: @Model.WagonTypeName</p>
+            <p class="card-text">Номер места: @Model.PlaceName</p>
+                <p class="card-text">RouteId: @Model.RouteId</p>
+            <!-- Добавьте другие необходимые поля для информации о билете -->
+        </div>
+    </div>
+
+    <!-- Форма для ввода банковских данных -->
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">Введите данные для покупки</h5>
+            <form>
+                <div class="form-group">
+                    <label for="cardNumber">Номер карты</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Введите номер карты">
+                </div>
+                <div class="form-group">
+                    <label for="expirationDate">Срок действия</label>
+                    <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV-код</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="Введите CVV-код">
+                </div>
+                <!-- Добавьте другие необходимые поля для ввода банковских данных -->
+                    <button type="submit" class="btn" style="background-color:#97a4e5; margin-top:10px" asp-route-id="@Model.RouteId" asp-route-wagonId="@Model.WagonId" asp-route-placeId="@Model.PlaceId">Оплатить</button>
+            </form>
+        </div>
+    </div>
+</div>
+</form>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

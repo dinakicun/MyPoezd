@@ -1,0 +1,48 @@
+﻿@model User
+<style>
+ .box2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+</style>
+    <div class="box2" id="regist">
+        <div class="container3">
+            <div class="auto_exit" id="auto_exit2" onclick="myFunction6()">
+                <img src="~/images/cross.png" id="ex_img" />
+            </div>
+            <div class="top3">
+                <header>Создание аккаунта</header>
+                <header id="sec_header">Пожалуйста, заполните поля</header>
+            </div>
+            <form method='post'>
+
+                <div class="auto_item">
+
+                    <input type="text" class="input2" name='Surname' placeholder="Фамилия">
+                </div>
+                <div class="auto_item">
+                    <input type="text" class="input2" name='Name' placeholder="Имя">
+                </div>
+                <div class="auto_item">
+                    <input type="text" class="input2" name='MiddleName' placeholder="Отчество" id="">
+                </div>
+                <div class="auto_item">
+                    <input type="text" class="input2" name="PassportData" placeholder="Паспорт" id="">
+                </div>
+                <div class="auto_item">
+                    <input type="text" class="input2" name="NumberPhone" placeholder="Номер телефона" id="">
+                </div>
+                <div class="auto_item">
+                    <input type="password" class="input2" placeholder="Пароль" id="" name="Password">
+                </div>
+                <div class="auto_item">
+                    <input type="text" class="input2" placeholder="Повторите пароль" id="">
+                </div>
+                <div class="auto_item">
+                    <input type="submit" class="submits" value="Готово" id="">
+                </div>
+            </form>
+        </div>
+    </div>
