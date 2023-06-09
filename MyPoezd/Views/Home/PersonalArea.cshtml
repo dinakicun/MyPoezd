@@ -1,9 +1,16 @@
 ﻿@model MyPoezd.Models.User
+
 <style>
     /* Стили для страницы */
     .profile1 {
         font-family: 'Literata', serif;
         padding: 20px;
+    }
+
+
+    .input-field {
+        margin-bottom: 20px; 
+        width: 300px;
     }
 
     h1 {
@@ -15,8 +22,16 @@
         padding: 20px;
         margin-bottom: 20px;
     }
-</style>
 
+    .purple-btn {
+        background-color: #A5A5A5;
+        color: white;
+        width: 320px;
+
+
+    }
+
+</style>
 @if (User.IsInRole("Admin"))
 {
     <div class="col-12">
@@ -45,25 +60,38 @@
         </a>
     </div>
 }
-
 @if (User.IsInRole("User"))
 {
-
-
-
-    <div class="col-12 mt-1">
-        <a asp-controller="Home" asp-action="UpdateUser" class="btn mx-2" style="background-color:#97a4e5">
-            <i class="fa-solid fa-trash-can"></i> Изменить личные данные
-        </a>
-    </div>
-@*    <div class="profile1">
-        <h1>Личный кабинет</h1>
-
-        <div class="profile">
-            <h2>Мои данные</h2>
-            <p><strong>Имя: @Model.Name</strong> </p>
-            <p><strong>Фамилия: @Model.Surname</strong></p>
-            <p><strong>Телефон: @Model.NumberPhone</strong></p>
+    <div class="box" id="auto" style="margin-top: 20px; display: flex; justify-content: center; ">
+        <div class="container2" style="background-color: white; border: 2px solid #97a4e5;">
+            <div class="auto_img">
+                <img id="a_img" src="~/images/user3.png" />
+            </div>
+            <div class="top2">
+                <header style="color: #97a4e5;; font-weight: bold; font-size: 1.7em;">Личный кабинет</header>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" style="background-color:white; color: #A5A5A5;" name="Surname" maxlength="50" placeholder="Фамилия" value="@Model.Surname" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" style="background-color:white; color: #A5A5A5;" name="Name" maxlength="50" placeholder="Имя" value="@Model.Name" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" style="background-color:white; color: #A5A5A5;" name="MiddleName" maxlength="50" placeholder="Отчество" value="@Model.MiddleName" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" style="background-color:white; color: #A5A5A5;" name="PassportNumber" maxlength="10" placeholder="Номер паспорта" value="@Model.PassportData" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" style="background-color:white; color: #A5A5A5;" name="PhoneNumber" maxlength="11" placeholder="Номер телефона" value="@Model.NumberPhone" readonly>
+            </div>
+            <div class="input-field">
+                <a asp-controller="Home" asp-action="UpdateUser" class="btn mx-2 purple-btn" style="background-color: transparent; color: #97a4e5;">
+                    <i class="fa-solid fa-trash-can "></i> Изменить личные данные
+                </a>
+            </div>
         </div>
-    </div>*@
+    </div>
 }
+
+
