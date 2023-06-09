@@ -1,30 +1,49 @@
 ﻿@model MyPoezd.Models.Wagon
-<form method="post" asp-action="WagonsEdit">
-    <div class="border p-3" style=" margin-top:10px">
+<style>
+    .train-validation-error {
+        font-size: 15px;
+        color: #97a4e5;
+    }
+
+    .border {
+        border-radius: 10px;
+        border-color: #97a4e5;
+        border-width: 1px;
+        border-style: dashed;
+        margin-top: 20px;
+    }
+
+    h2 {
+        font-family: 'Literata', serif;
+        color: #97a4e5;
+    }
+</style>
+<form method="post" asp-action="WagonsEdit" onsubmit="return validateForm()">
+    <div class="border p-3" style="margin-top: 10px;">
         <div asp-validation-summary="ModelOnly" class="text-secondary"></div>
         <div class="form-group row">
-            <h2 class="text-secondary pl-3">Изменение вагона</h2>
+            <h2 >Изменение вагона</h2>
         </div>
-        <div class = "row">
-            <div class="col-8"> 
+        <div class="row">
+            <div class="col-8">
 
-                <div class = "form-group row">
+                <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Name">Название вагона</label>
+                        <label asp-for="Name" style="margin-left: 120px">Название вагона</label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Name" class="form-control"/>
+                        <input asp-for="Name" class="form-control" id="nameInput" />
                         <span asp-validation-for="Name" class="text-danger"></span>
+                        <p class="wagon-validation-error" id="nameError"></p>
                     </div>
                 </div>
 
-                <div class = "form-group row">
+                <div class="form-group row">
                     <div class="col-8 offset-4 row">
-
                         <div class="col">
                             <input type="submit" class="btn w-100" style="background-color:#97a4e5; margin-top:10px" value="Изменить" />
                         </div>
-                        <br/>
+                        <br />
                         <div class="col">
                             <a asp-action="WagonsIndex" class="btn w-100" style="background-color:#97a4e5; margin-top:10px"><i class="fa-solid fa-arrow-right-from-bracket"> &nbsp; </i>Назад</a>
                         </div>
@@ -34,3 +53,19 @@
         </div>
     </div>
 </form>
+
+<script>
+    function validateForm() {
+        var nameInput = document.getElementById("nameInput");
+        var nameError = document.getElementById("nameError");
+
+        nameError.innerText = "";
+
+        if (nameInput.value.trim() === "") {
+            nameError.innerText = "Пожалуйста, введите название вагона.";
+            return false;
+        }
+
+        return true;
+    }
+</script>

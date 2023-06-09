@@ -1,41 +1,90 @@
-﻿@model User
-
-   
-
-<style>
+﻿<style>
     .box {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 10%;
-        /* Другие свойства стиля для контейнера box */
+    }
+    
+    .error {
+        font-size: 15px;
+        color: #97a4e5;
     }
 </style>
-<form method='post'>
-        <div class="box" id="auto">
-            <div class="container2">
-                <div class="auto_img">
-                    <img id="a_img" src="~/images/user2.png" />
-                </div>
-                <div class="top2">
-                    <header>Войдите в профиль</header>
-                </div>
 
-                <div class="input-field">
-                <input type="text" class="input" name="NumberPhone" placeholder="Номер телефона" id="">
+<form method='post' onsubmit="return validateForm()">
+    <div class="box" id="auto">
+        <div class="container2">
+            <div class="auto_img">
+                <img id="a_img" src="~/images/user2.png" />
+            </div>
+            <div class="top2">
+                <header>Войдите в профиль</header>
+            </div>
+
+            <div class="input-field">
+                <input type="text" class="input" name="NumberPhone" maxlength="11" placeholder="Номер телефона" id="numberPhoneInput">
+                <p id="numberPhoneError" class="error"></p>
+            </div>
+            <div class="input-field">
+                <input type="password" class="input" name="password" maxlength="20" placeholder="Пароль" id="passwordInput">
+                <p id="passwordError" class="error"></p>
+            </div>
+            <div class="input-field">
+            <p id="invalidCredentialsError" class="error">@ViewBag.InvalidCredentialsError</p>
+            <input type="submit" class="submit2" value="Войти">
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <p><a href="Registration" id="myLink">Eщё не с нами?</a></p>
                 </div>
-                <div class="input-field">
-                    <input type="Password" class="input" name="password" placeholder="Пароль" id="">
-                </div>
-                <input type="submit" class="submit2" value="Войти">
-                <div class="two-col">
-                    <div class="one">
-                        <p><a href="Registration" id="myLink">Eщё не с нами?</a></p>
-                    </div>
-                    <div class="two">
-                        <p><a href="#">Забыли пароль?</a></p>
-                    </div>
+                <div class="two">
+                    <p><a href="#">Забыли пароль?</a></p>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+</form>
+
+<script>
+    function validateForm() {
+        var numberPhoneInput = document.getElementById("numberPhoneInput");
+        var numberPhoneError = document.getElementById("numberPhoneError");
+        var passwordInput = document.getElementById("passwordInput");
+        var passwordError = document.getElementById("passwordError");
+        var invalidCredentialsError = document.getElementById("invalidCredentialsError");
+
+        numberPhoneError.textContent = "";
+        passwordError.textContent = "";
+        invalidCredentialsError.textContent = "";
+
+        var numberPhone = numberPhoneInput.value;
+        var numberPhonePattern = /^[78]\d{10}$/;
+
+        if (numberPhone.trim() === "") {
+            numberPhoneError.textContent = "Пожалуйста, введите номер телефона.";
+            return false;
+        }
+
+        if (!numberPhonePattern.test(numberPhone)) {
+            numberPhoneError.textContent = "Введите номер, начинающийся на 8 или 7 и состоящий из 11 цифр.";
+            return false;
+        }
+
+        var password = passwordInput.value;
+
+        if (password.trim() === "") {
+            passwordError.textContent = "Пожалуйста, введите пароль.";
+            return false;
+        }
+
+        if (password.includes(" ")) {
+            passwordError.textContent = "Пароль не должен содержать пробелы.";
+            return false;
+        }
+
+        return true;
+    }
+
+
+</script>

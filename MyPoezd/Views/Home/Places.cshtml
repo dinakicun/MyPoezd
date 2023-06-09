@@ -4,6 +4,11 @@
 <form method="post" asp-controller="Home" asp-action="Places">
    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <script src="~/js/site.js" asp-append-version="true"></script>
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="pl-3">Выберите место:</h2>
+        </div>
     @{
         var place = Model;
         @if (place.CountOfPlaces == "54")
@@ -236,15 +241,28 @@
                 </div> 
             </div>
         }
-        <div class="border p-3">
-
-            <div class="form-group row">
-                <h2 class="text-secondary pl-3">Выберите место:</h2>
-            </div>
+       
             <div class="row">
                 <div class="col-12">
 
                     <style>
+                        .card {
+                            border-radius: 10px;
+                         
+                        }
+
+                        .border {
+                            margin-top: 20px;
+                            border-radius: 10px;
+                            background-color: #97a4e5;
+                        }
+
+                        h2 {
+                            font-family: 'Literata', serif;
+                            color: white;
+                        }
+
+                    
                         .vl {
                         border-left: 1px solid grey;
                         height: 100px;
@@ -260,7 +278,7 @@
                         }
                         #aa{
                             text-decoration: none;
-                            color: #97a4e5"
+                            color: #97a4e5
                         }
                     </style>
 
@@ -268,35 +286,35 @@
                     {
                         <div class="card">
                             <div class="card-body">
-                                <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                <div class="col-2" style=" font-size: 15px">
                                     <span>Поезд: @place.TrainName</span>
                                 </div>
                                 <div class="row col-12">
-                                    <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                    <div class="col-2" style=" font-size: 15px">
                                         <span> Номер вагона: @place.WagonName </span>
                                     </div>
-                                    <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                    <div class="col-2" style=" font-size: 15px">
                                         <span> Тип вагона: @place.WagonTypeName </span>
                                     </div>
                                    @if(place.PlaceName != null){
                                         
                                         @if(place.Status != null){
-                                            <div class="col-2" style="font-weight: bold; font-size: 15px" id="placeContainer">
+                                            <div class="col-2" style=" font-size: 15px; color: #97a4e5" id="placeContainer">
                                                 <span> Номер места: @place.PlaceName </span>
                                             </div>
-                                        <div class="col-2" style="font-weight: bold; font-size: 15px" id="placeContainer">
+                                            <div class="col-2" style=" font-size: 15px; color: #97a4e5" id="placeContainer">
                                             <span> Статус: @place.Status </span>
                                         </div>
-                                            <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                            <div class="col-2" style=" font-size: 15px; color: #97a4e5" >
                                                 <span>  Цена: @place.Price </span>
                                             </div>
                                         }
                                         else
                                         {
-                                            <div class="col-2" style="font-weight: bold; font-size: 15px" id="placeContainer">
+                                            <div class="col-2" style=" font-size: 15px; color: #97a4e5" id="placeContainer">
                                                 <span> Номер места: @place.PlaceName </span>
                                             </div>
-                                            <div class="col-2" style="font-weight: bold; font-size: 15px">
+                                            <div class="col-2" style=" font-size: 15px; color: #97a4e5">
                                                 <span>  Цена: @place.Price </span>
                                             </div>
                                             <div class="col-2" id="aa" style="font-weight: bold; font-size: 15px; color: #97a4e5">
@@ -314,7 +332,7 @@
             </div>
 
         </div>
-    </div>
+ 
     }
 </form>
 

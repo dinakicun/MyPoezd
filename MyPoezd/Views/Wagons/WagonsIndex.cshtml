@@ -1,13 +1,24 @@
 ﻿@model IEnumerable<MyPoezd.Models.Wagon>
+<style>
+
+
+    .container {
+        border-radius: 10px;
+        border-color: #97a4e5;
+        border-width: 1px;
+        border-style: dashed;
+        margin-top: 20px;
+    }
+
+    h2 {
+        font-family: 'Literata', serif;
+        color: #97a4e5;
+    }
+</style>
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-10">
-            <h2 class="text-secondary">Список вагонов</h2>
-        </div>
-        <div class="col-2 align-center">
-            <a asp-controller="Wagons" asp-action="WagonsCreate" class="btn" style="background-color:#97a4e5">
-                <i class="fa-solid fa-plus"></i> Добавить новый вагон
-            </a>
+            <h2 >Список вагонов</h2>
         </div>
     </div>
     <br /><br />
@@ -35,10 +46,10 @@
                         <td width="50%">@city.Name</td>
                         <td class="text-center">
                             <div class="w-100 btn-group" role="group">
-                                <a asp-controller="Wagons" asp-route-Id="@city.Id" asp-action="WagonsEdit" class="btn mx-2" style="background-color:#c8c8c8">
+                                <a asp-controller="Wagons" asp-route-Id="@city.Id" asp-action="WagonsEdit" class="btn mx-2" style="background-color:#c8c8c8; color:white">
                                     <i class="fa-solid fa-pen-to-square"></i> Изменить
                                 </a>
-                                <a asp-controller="Wagons" asp-route-Id="@city.Id" asp-action="Delete" class="btn mx-2" style="background-color:#97a4e5">
+                                <a asp-controller="Wagons" asp-route-Id="@city.Id" asp-action="Delete" class="btn mx-2" style="background-color:#97a4e5; color:white">
                                     <i class="fa-solid fa-trash-can"></i> Удалить
                                 </a>
                             </div>

@@ -3,6 +3,7 @@ using MyPoezd.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyPoezd;
+using System.Net.Sockets;
 
 namespace Poezd.Controllers
 {
@@ -30,9 +31,15 @@ namespace Poezd.Controllers
         {
 
             var result = await _db.Tickets.FirstOrDefaultAsync(x => x.Id == id);
-            var selectedUserId = result.UserId;
+            var placeId = result.PlaceId;
+            var place = await _db.Places.FirstOrDefaultAsync(x => x.Id == placeId);
+            if (place != null)
+            {
+                place.UserId = null;
+                await _db.SaveChangesAsync();
+            }
             _db.Tickets.Remove(result);
-            _db.Places.Remove(_db.Places.Find(selectedUserId));
+           
             await _db.SaveChangesAsync();
             return RedirectToAction("TicketsIndex");
         }

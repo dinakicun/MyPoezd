@@ -1,46 +1,213 @@
 ﻿@model MyPoezd.Models.ViewModels.OrderView
-<form method="post" asp-action="Credit">
-<div class="container">
-        <h1 style="color:#97a4e5">Покупка билета</h1>
 
-    <!-- Информация о билете -->
-    <div class="card">
+<style>
+    .error {
+        font-size: 15px;
+        color: #97a4e5;
+    }
+
+    .card2 {
+        border-radius: 10px;
+        font-family: 'Literata', serif;
+        border-color: #97a4e5;
+        border-width: 1px;
+        border-style: dashed;
+    }
+
+    .card1 {
+        border-radius: 10px;
+        font-family: 'Literata', serif;
+        border-color: #97a4e5;
+        border-width: 1px;
+        border-style: dashed;
+
+    }
+
+    .border {
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: #97a4e5;
+    }
+
+    h2 {
+        font-family: 'Literata', serif;
+        color: white;
+    }
+
+</style>
+
+<div class="container">
+    <h2 style="color:#97a4e5">Покупка билета</h2>
+
+    <div class="card1">
         <div class="card-body">
             <h5 class="card-title">Информация о билете</h5>
-            <p class="card-text">Маршрут:</p>
+            <p class="card-text">Маршрут:  @Model.Route.Id</p>
             <p class="card-text">Дата и время отправления: @Model.Route.DepartureDate</p>
             <p class="card-text">Дата и время приезда: @Model.Route.ArrivalDate</p>
             <p class="card-text">Номер поезда: @Model.TrainName</p>
             <p class="card-text">Номер вагона: @Model.WagonName</p>
             <p class="card-text">Тип вагона: @Model.WagonTypeName</p>
             <p class="card-text">Номер места: @Model.PlaceName</p>
-                <p class="card-text">RouteId: @Model.RouteId</p>
-            <!-- Добавьте другие необходимые поля для информации о билете -->
+            <p class="card-text">RouteId: @Model.RouteId</p>
         </div>
     </div>
 
-    <!-- Форма для ввода банковских данных -->
-    <div class="card mt-3">
+    <div class="card2 mt-3">
         <div class="card-body">
             <h5 class="card-title">Введите данные для покупки</h5>
-            <form>
+            <form method="post" asp-action="Credit" onsubmit="return validateForm4()">
                 <div class="form-group">
                     <label for="cardNumber">Номер карты</label>
-                    <input type="text" class="form-control" id="cardNumber" placeholder="Введите номер карты">
+                    <input type="text" class="form-control" id="cardNumber" maxlength="16" placeholder="Введите номер карты">
+                    <p id="cardNumberError" class="error"></p>
                 </div>
                 <div class="form-group">
-                    <label for="expirationDate">Срок действия</label>
-                    <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+                    <label for="expirationMonth">Месяц</label>
+                    <select class="form-control" id="expirationMonth">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="expirationYear">Год</label>
+                    <select class="form-control" id="expirationYear" onchange="handleExpirationYearChange()">
+                        <option value="23">23</option>
+                        <option value="24" selected>24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="cvv">CVV-код</label>
-                    <input type="text" class="form-control" id="cvv" placeholder="Введите CVV-код">
+                    <input type="text" class="form-control" id="cvv" maxlength="3" placeholder="Введите CVV-код">
+                    <p id="cvvError" class="error"></p>
                 </div>
-                <!-- Добавьте другие необходимые поля для ввода банковских данных -->
-                    <button type="submit" class="btn" style="background-color:#97a4e5; margin-top:10px" asp-route-id="@Model.RouteId" asp-route-wagonId="@Model.WagonId" asp-route-placeId="@Model.PlaceId">Оплатить</button>
+                <button type="submit" class="btn" style="background-color:#97a4e5; margin-top:10px"
+                        asp-route-id="@Model.RouteId" asp-route-wagonId="@Model.WagonId" asp-route-placeId="@Model.PlaceId">
+                    Оплатить
+                </button>
             </form>
         </div>
     </div>
 </div>
-</form>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    
+    var currentDate = new Date();
+
+    
+    var currentMonth = currentDate.getMonth() + 1; // Месяцы в JavaScript начинаются с 0, поэтому добавляем 1
+    var currentYear = currentDate.getFullYear();
+
+    // Устанавливаем значения текущего года и следующих двух лет в селект expirationYear
+    var expirationYearSelect = document.getElementById("expirationYear");
+    for (var i = currentYear; i <= currentYear + 2; i++) {
+        var option = document.createElement("option");
+        option.value = i.toString().substr(-2); // Оставляем только последние две цифры года
+        option.textContent = i.toString().substr(-2);
+        expirationYearSelect.appendChild(option);
+    }
+
+    // Устанавливаем значения месяца от текущего месяца до 12 в селект expirationMonth
+    var expirationMonthSelect = document.getElementById("expirationMonth");
+    for (var i = currentMonth; i <= 12; i++) {
+        var option = document.createElement("option");
+        var monthValue = i < 10 ? "0" + i : i.toString(); // Форматируем значения месяца с ведущим нулем
+        option.value = monthValue;
+        option.textContent = monthValue;
+        expirationMonthSelect.appendChild(option);
+    }
+
+    function handleExpirationYearChange() {
+        var expirationYear = document.getElementById("expirationYear");
+        var expirationMonth = document.getElementById("expirationMonth");
+
+        var selectedYear = expirationYear.value;
+
+        if (selectedYear === currentYear.toString().substr(-2)) {
+            // Если выбран текущий год, устанавливаем минимальное значение месяца
+            removeOptionsBeforeValue(expirationMonth, currentMonth);
+        } else {
+            //  восстанавливаем все значения месяца
+            restoreAllOptions(expirationMonth);
+        }
+    }
+
+    function removeOptionsBeforeValue(selectElement, value) {
+        var options = selectElement.options;
+        for (var i = options.length - 1; i >= 0; i--) {
+            if (options[i].value < value) {
+                selectElement.remove(i);
+            }
+        }
+    }
+
+    function restoreAllOptions(selectElement) {
+        var options = selectElement.options;
+        for (var i = options.length - 1; i >= 0; i--) {
+            selectElement.remove(i);
+        }
+
+        //  все значения месяца от 01 до 12
+        for (var i = 1; i <= 12; i++) {
+            var option = document.createElement("option");
+            var value = i < 10 ? "0" + i : "" + i;
+            option.value = value;
+            option.textContent = value;
+            selectElement.appendChild(option);
+        }
+    }
+
+    function validateForm4() {
+        var cardNumber = document.getElementById("cardNumber");
+        var cardNumberError = document.getElementById("cardNumberError");
+        var cvv = document.getElementById("cvv");
+        var cvvError = document.getElementById("cvvError");
+
+        cardNumberError.textContent = "";
+        cvvError.textContent = "";
+
+        var cardNumber1 = cardNumber.value;
+        var cardNumberPattern = /^[0-9]+$/
+
+        if (cardNumber1.trim() === "") {
+            cardNumberError.textContent = "Пожалуйста, введите номер карты.";
+            return false;
+        }
+
+        if (!cardNumberPattern.test(cardNumber1)) {
+            cardNumberError.textContent = "Введите номер, состоящий из 16 цифр.";
+            return false;
+        }
+
+        var cvv1 = cvv.value;
+        var cvvPattern = /^[0-9]+$/
+
+        if (cvv1.trim() === "") {
+            cvvError.textContent = "Пожалуйста, введите CVV.";
+            return false;
+        }
+
+        if (!cvvPattern.test(cvv1)) {
+            cvvError.textContent = "Введите CVV, состоящий из 3 цифр.";
+            return false;
+        }
+
+        return true;
+    }
+</script>

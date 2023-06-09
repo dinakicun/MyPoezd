@@ -1,98 +1,104 @@
 ﻿@model MyPoezd.Models.ViewModels.RoutesView
+<style>
+  .border {
+        border-radius: 10px;
+        border-color: #97a4e5;
+        border-width: 1px;
+        border-style: dashed;
+        margin-top: 20px;
+    }
 
-
- <form method="post" asp-action="RoutesCreate">
+    h2 {
+        font-family: 'Literata', serif;
+        color: #97a4e5;
+    }
+</style>
+<form method="post" asp-action="RoutesCreate">
     <div class="border p-3" style="margin-top:10px">
-         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-         <div class="form-group row">
-             <h2 class="text-secondary pl-3">Добавление расписания</h2>
-         </div>
-         <div class = "row">
-             <div class="col-8"> 
-
-                 <div class = "form-group row">
-                     <div class="col-4">
-                         <label asp-for="Route.DepartureDate">Дата отправки</label>
-                     </div>
-                     <div class="col-8">
-                         <input type="date" asp-for="Route.DepartureDate" class="form-control" />
-                     </div>
-                 </div>
-                 <div class = "form-group row">
-                     <div class="col-4">
-                         <label asp-for="DepartureTime">Время отправки</label>
-                     </div>
-                     <div class="col-8">
-                         <input type="time" asp-for="DepartureTime" class="form-control" />
-                     </div>
-                 </div>
-
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 >Добавление расписания</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Route.DepartureDate">Дата отправки</label>
+                    </div>
+                    <div class="col-8">
+                        <input id="departureDateInput" type="date" asp-for="Route.DepartureDate" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="DepartureTime">Время отправки</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="time" asp-for="DepartureTime" class="form-control" />
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="Route.ArrivalDate">Дата прибытия</label>
                     </div>
                     <div class="col-8">
-                        <input type="date" asp-for="Route.ArrivalDate" class="form-control" />
+                        <input id="arrivalDateInput" type="date" asp-for="Route.ArrivalDate" class="form-control" />
                     </div>
                 </div>
-                 <div class="form-group row">
-                     <div class="col-4">
-                         <label asp-for="ArrivalTime">Время прибытия</label>
-                     </div>
-                     <div class="col-8">
-                         <input type="time" asp-for="ArrivalTime" class="form-control" />
-                     </div>
-                 </div>
-
-                 <div class="form-group row">
-                     <div class="col-4">
-                         <label asp-for="Route.PriceEconom">Цена плацкарт</label>
-                     </div>
-                     <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ArrivalTime">Время прибытия</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="time" asp-for="ArrivalTime" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Route.PriceEconom">Цена плацкарт</label>
+                    </div>
+                    <div class="col-8">
                         <input asp-for="Route.PriceEconom" class="form-control" />
-                     </div>
-                 </div>
-
-                 <div class="form-group row">
-                     <div class="col-4">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
                         <label asp-for="Route.PriceCoupe">Цена купе</label>
-                     </div>
-                     <div class="col-8">
+                    </div>
+                    <div class="col-8">
                         <input asp-for="Route.PriceCoupe" class="form-control" />
-                     </div>
-                 </div>
-                 
-                 <div class = "form-group row">
-                     <div class="col-4">
-                         <label asp-for="@Model.DepartureCity">Город отправки</label>
-                     </div>
-                     <div class="col-8">
-                        <select asp-for="@Model.DepartureCity" class="form-control">
-                             @{
-                                 foreach (var item in Model.Cities)
-                                 {
-                                     <option>@item.Name</option>
-                                 }
-                             }
-                         </select>
-                     </div>
-                 </div>
-                 
-                 <div class = "form-group row">
-                     <div class="col-4">
-                         <label asp-for="@Model.ArrivalCity">Город прибытия</label>
-                     </div>
-                     <div class="col-8">
-                         <select asp-for="@Model.ArrivalCity" class="form-control">
-                             @{
-                                 foreach (var item in Model.Cities)
-                                 {
-                                     <option>@item.Name</option>
-                                 }
-                             }
-                         </select>
-                     </div>
-                 </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="@Model.DepartureCity">Город отправки</label>
+                    </div>
+                    <div class="col-8">
+                        <select id="departureCitySelect" asp-for="@Model.DepartureCity" class="form-control">
+                            @{
+                                foreach (var item in Model.Cities)
+                                {
+                                    <option data-city="@item.Name">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="@Model.ArrivalCity">Город прибытия</label>
+                    </div>
+                    <div class="col-8">
+                        <select  asp-for="@Model.ArrivalCity" id="arrivalCitySelect" class="form-control">
+                            @{
+                                foreach (var item in Model.Cities)
+                                {
+                                    <option data-city="@item.Name">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="@Model.TrainName">Поезд</label>
@@ -108,21 +114,80 @@
                         </select>
                     </div>
                 </div>
-                 
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+                        <div class="col">
+                            <input type="submit" class="btn w-100" style="background-color:#97a4e5; margin-top:10px; color:white" value="Добавить" />
+                        </div>
+                        <br />
+                        <div class="col">
+                            <a asp-action="RoutesIndex" class="btn w-100" style="background-color:#97a4e5; margin-top:10px; color:white"><i class="fa-solid fa-arrow-right-from-bracket"> &nbsp; </i>Назад</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    // Получение элементов формы
+    var departureDateInput = document.getElementById('departureDateInput');
+    var arrivalDateInput = document.getElementById('arrivalDateInput');
+    var departureTimeInput = document.getElementById('departureTimeInput');
+    var arrivalTimeInput = document.getElementById('arrivalTimeInput');
+    var departureCitySelect = document.getElementById('departureCitySelect');
+    var arrivalCitySelect = document.getElementById('arrivalCitySelect');
+    var submitButton = document.querySelector('input[type="submit"]');
 
-                 <div class = "form-group row">
-                     <div class="col-8 offset-4 row">
+    // Установка дефолтных значений даты отправления и даты прибытия
+    var today = new Date();
+    var defaultDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    departureDateInput.valueAsDate = defaultDate;
+    arrivalDateInput.valueAsDate = defaultDate;
 
-                         <div class="col">
-                            <input type="submit" class="btn w-100" style="background-color:#97a4e5; margin-top:10px" value="Добавить" />
-                         </div>
-                         <br/>
-                         <div class="col">
-                            <a asp-action="RoutesIndex" class="btn w-100" style="background-color:#97a4e5; margin-top:10px"><i class="fa-solid fa-arrow-right-from-bracket"> &nbsp; </i>Назад</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </form>
+    // Установка минимальной даты отправления на текущую дату
+    departureDateInput.min = today.toISOString().split('T')[0];
+    // Установка минимальной даты прибытия на завтрашнюю дату
+    var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    arrivalDateInput.min = tomorrow.toISOString().split('T')[0];
+
+    // Обработчик события изменения значения в селекторе "Город отправления"
+    departureCitySelect.addEventListener('change', function () {
+        var selectedDepartureCity = departureCitySelect.options[departureCitySelect.selectedIndex].dataset.city;
+        var arrivalCityOptions = arrivalCitySelect.getElementsByTagName('option');
+
+        // Перебор всех опций в селекторе "Город прибытия"
+        for (var i = 0; i < arrivalCityOptions.length; i++) {
+            var option = arrivalCityOptions[i];
+
+            // Если выбранный город отправления равен значению опции, удаляем опцию
+            if (option.dataset.city === selectedDepartureCity) {
+                arrivalCitySelect.removeChild(option);
+            }
+        }
+    });
+
+    // Обработчик события изменения значения в селекторе "Город прибытия"
+    arrivalCitySelect.addEventListener('change', function () {
+        var selectedArrivalCity = arrivalCitySelect.options[arrivalCitySelect.selectedIndex].dataset.city;
+        var departureCityOptions = departureCitySelect.getElementsByTagName('option');
+
+        // Перебор всех опций в селекторе "Город отправления"
+        for (var i = 0; i < departureCityOptions.length; i++) {
+            var option = departureCityOptions[i];
+
+            // Если выбранный город прибытия равен значению опции, удаляем опцию
+            if (option.dataset.city === selectedArrivalCity) {
+                departureCitySelect.removeChild(option);
+            }
+        }
+    });
+
+    // Обработчик события отправки формы
+    submitButton.addEventListener('click', function (event) {
+        var selectedDepartureCity = departureCitySelect.options[departureCitySelect.selectedIndex].dataset.city;
+        var selectedArrivalCity = arrivalCitySelect.options[arrivalCitySelect.selectedIndex].dataset.city;
+
+    });
+</script>
+

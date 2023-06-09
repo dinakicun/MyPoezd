@@ -27,20 +27,58 @@
                             <button onclick="myFunction2()" class="dropbtn">профиль</button>
                             <div id="myDropdown" class="dropdown-content">
 
-                                <div class="setting">
-                                    <img id="set" src="~/images/setting.png.png" />
+                                
+                                   
                                     @if (User.Identity.IsAuthenticated)
                                     {
-                                        <a asp-controller="Home" asp-action="PersonalArea" id="nast">Настройки</a>
+                                        @if ((User.IsInRole("Admin")))
+                                        {
+                                        <div class="setting">
+                                            <img id="set" src="~/images/setting.png.png" />
+                                            <a asp-controller="Trains" asp-action="TrainsIndex" id="nast">Поезда</a>
+                                        </div>
+                                            <div class="setting">
+                                            <img id="set" src="~/images/setting.png.png" />
+                                            <a asp-controller="Tickets" asp-action="TicketsIndex"id="nast">Билеты</a>
+                                        </div>
+                                                <div class="setting">
+                                            <img id="set" src="~/images/setting.png.png" />
+                                            <a asp-controller="Cities" asp-action="CitiesIndex" id="nast">Города</a>
+                                        </div>
+                                                    <div class="setting">
+                                            <img id="set" src="~/images/setting.png.png" />
+                                            <a asp-controller="Wagons" asp-action="WagonsIndex" id="nast">Вагоны</a>
+                                        </div>
+                                                        <div class="setting">
+                                            <img id="set" src="~/images/setting.png.png" />
+                                            <a asp-controller="Routes" asp-action="RoutesIndex" id="nast">Маршруты</a>
+                                        </div>
+                                        }
+                                        else
+                                        {
+                                        <div class="setting">
+                                            <img id="set" src="~/images/setting.png.png" />
+                                            <a asp-controller="Home" asp-action="PersonalArea" id="nast">Кабинет</a>
+                                        </div>
+                                        <div class="setting">
+                                            <img id="set" src="~/images/setting.png.png" />
+                                            <a asp-controller="Home" asp-action="HistoryOrder" id="nast">История билетов</a>
+                                        </div>
+                                        }
                                     }
                                     else
                                     {
+                                    <div class="setting">
+                                        <img id="set" src="~/images/setting.png.png" />
                                         <a asp-controller="Home" asp-action="Login" id="nast">Настройки</a>
+                                        </div>
                                     }
-                                </div>
+                                
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <a id="vhod" asp-controller="Home" asp-action="Logout">Выйти</a>
+                                    
+                                        <a id="vhod" asp-controller="Home" asp-action="Logout">Выйти</a>
+                                    
                                 }
                                 else
                                 {

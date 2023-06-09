@@ -1,48 +1,147 @@
 ﻿@model User
 <style>
- .box2 {
+    .box2 {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 10px;
     }
+
+    .error {
+        font-size: 15px;
+        color: #97a4e5;
+    }
 </style>
-    <div class="box2" id="regist">
-        <div class="container3">
-            <div class="auto_exit" id="auto_exit2" onclick="myFunction6()">
-                <img src="~/images/cross.png" id="ex_img" />
-            </div>
-            <div class="top3">
-                <header>Создание аккаунта</header>
-                <header id="sec_header">Пожалуйста, заполните поля</header>
-            </div>
-            <form method='post'>
-
-                <div class="auto_item">
-
-                    <input type="text" class="input2" name='Surname' placeholder="Фамилия">
-                </div>
-                <div class="auto_item">
-                    <input type="text" class="input2" name='Name' placeholder="Имя">
-                </div>
-                <div class="auto_item">
-                    <input type="text" class="input2" name='MiddleName' placeholder="Отчество" id="">
-                </div>
-                <div class="auto_item">
-                    <input type="text" class="input2" name="PassportData" placeholder="Паспорт" id="">
-                </div>
-                <div class="auto_item">
-                    <input type="text" class="input2" name="NumberPhone" placeholder="Номер телефона" id="">
-                </div>
-                <div class="auto_item">
-                    <input type="password" class="input2" placeholder="Пароль" id="" name="Password">
-                </div>
-                <div class="auto_item">
-                    <input type="text" class="input2" placeholder="Повторите пароль" id="">
-                </div>
-                <div class="auto_item">
-                    <input type="submit" class="submits" value="Готово" id="">
-                </div>
-            </form>
+<div class="box2" id="regist">
+    <div class="container3">
+        <div class="top3">
+            <header>Создание аккаунта</header>
+            <header id="sec_header">Пожалуйста, заполните поля</header>
         </div>
+        <form method='post' onsubmit="return validateForm2()">
+            <div class="auto_item">
+                <input type="text" class="input2" name='Surname' placeholder="Фамилия" maxlength="20" >
+                <p id="surnameError" class="error"></p>
+            </div>
+            <div class="auto_item">
+                <input type="text" class="input2" name='Name' placeholder="Имя" maxlength="20">
+                <p id="nameError" class="error"></p>
+            </div>
+            <div class="auto_item">
+                <input type="text" class="input2" name='MiddleName' placeholder="Отчество" maxlength="20">
+                <p id="middleNameError" class="error"></p>
+            </div>
+            <div class="auto_item">
+                <input type="text" class="input2" name="PassportData" placeholder="Паспорт" maxlength="20">
+                <p id="passportDataError" class="error"></p>
+            </div>
+            <div class="auto_item">
+                <input type="text" class="input2" name="NumberPhone" placeholder="Номер телефона" maxlength="20">
+                <p id="numberPhoneError" class="error"></p>
+            </div>
+            <div class="auto_item">
+                <input type="password" class="input2" placeholder="Пароль" id="" name="Password" maxlength="20">
+                <p id="passwordError" class="error"></p>
+            </div>
+            <p id="invalidCredentialsError" class="error">@ViewBag.InvalidCredentialsError</p>
+            <div class="auto_item">
+                <input type="submit" class="submits" value="Готово" id="" >
+            </div>
+        </form>
     </div>
+</div>
+<script>
+    function validateForm2() {
+        var surnameInput = document.getElementsByName("Surname")[0];
+        var nameInput = document.getElementsByName("Name")[0];
+        var middleNameInput = document.getElementsByName("MiddleName")[0];
+        var passportDataInput = document.getElementsByName("PassportData")[0];
+        var numberPhoneInput = document.getElementsByName("NumberPhone")[0];
+        var passwordInput = document.getElementsByName("Password")[0];
+
+        var invalidCredentialsError = document.getElementById("invalidCredentialsError");
+
+        var surnameError = document.getElementById("surnameError");
+        var nameError = document.getElementById("nameError");
+        var middleNameError = document.getElementById("middleNameError");
+        var passportDataError = document.getElementById("passportDataError");
+        var numberPhoneError = document.getElementById("numberPhoneError");
+        var passwordError = document.getElementById("passwordError");
+
+        surnameError.textContent = "";
+        nameError.textContent = "";
+        middleNameError.textContent = "";
+        passportDataError.textContent = "";
+        numberPhoneError.textContent = "";
+        passwordError.textContent = "";
+        invalidCredentialsError.textContent = "";
+
+        var surnamePattern = /^[А-Яа-я]+$/;
+        var namePattern = /^[А-Яа-я]+$/;
+        var middleNamePattern = /^[А-Яа-я]+$/;
+        var passportDataPattern = /^[0-9]+$/;
+        var numberPhonePattern = /^[78]\d{10}$/;
+
+        if (surnameInput.value.trim() === "") {
+            surnameError.textContent = "Пожалуйста, введите фамилию.";
+            return false;
+        }
+
+        if (!surnamePattern.test(surnameInput.value)) {
+            surnameError.textContent = "Фамилия должна содержать только русские буквы.";
+            return false;
+        }
+
+        if (nameInput.value.trim() === "") {
+            nameError.textContent = "Пожалуйста, введите имя.";
+            return false;
+        }
+
+        if (!namePattern.test(nameInput.value)) {
+            nameError.textContent = "Имя должно содержать только русские буквы.";
+            return false;
+        }
+
+        if (middleNameInput.value.trim() === "") {
+            middleNameError.textContent = "Пожалуйста, введите отчество.";
+            return false;
+        }
+
+        if (!middleNamePattern.test(middleNameInput.value)) {
+            middleNameError.textContent = "Отчество должно содержать только русские буквы.";
+            return false;
+        }
+
+        if (passportDataInput.value.trim() === "") {
+            passportDataError.textContent = "Пожалуйста, введите номер паспорта.";
+            return false;
+        }
+
+        if (passportDataInput.value.length !== 10 || !passportDataPattern.test(passportDataInput.value)) {
+            passportDataError.textContent = "Номер паспорта должен содержать 10 символов и состоять из букв  цифр.";
+            return false;
+        }
+
+        if (numberPhoneInput.value.trim() === "") {
+            numberPhoneError.textContent = "Пожалуйста, введите номер телефона.";
+            return false;
+        }
+
+        if (!numberPhonePattern.test(numberPhoneInput.value)) {
+            numberPhoneError.textContent = "Введите номер, начинающийся на 8 или 7 и состоящий из 11 цифр.";
+            return false;
+        }
+
+        if (passwordInput.value.trim() === "") {
+            passwordError.textContent = "Пожалуйста, введите пароль.";
+            return false;
+        }
+
+        if (passwordInput.value.includes(" ")) {
+            passwordError.textContent = "Пароль не должен содержать пробелы.";
+            return false;
+        }
+
+        return true;
+    }
+</script>

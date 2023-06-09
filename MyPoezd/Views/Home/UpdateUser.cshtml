@@ -1,5 +1,11 @@
 ﻿@model MyPoezd.Models.User
-<form method="post" asp-action="UpdateUser">
+<style>
+    .error {
+        font-size: 15px;
+        color: #97a4e5;
+    }
+</style>
+<form method="post" asp-action="UpdateUser" onsubmit="return validateForm3()">
     <div class="border p-3">
         <div asp-validation-summary="ModelOnly" class="text-secondary"></div>
         <div class="form-group row">
@@ -16,7 +22,8 @@
                         <label asp-for="Surname">Фамилия</label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Surname" class="form-control" />
+                        <input asp-for="Surname" class="form-control" name='Surname' maxlength="20"/>
+                        <p id="surnameError" class="error"></p>
                     </div>
                 </div>
                 
@@ -25,7 +32,8 @@
                         <label asp-for="Name">Имя</label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Name" class="form-control" />
+                        <input asp-for="Name" class="form-control" name='Name' maxlength="20" />
+                        <p id="nameError" class="error"></p>
                     </div>
                 </div>
                 
@@ -34,7 +42,8 @@
                         <label asp-for="MiddleName">Отчество</label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="MiddleName" class="form-control" />
+                        <input asp-for="MiddleName" class="form-control" name='MiddleName' maxlength="20" />
+                        <p id="middleNameError" class="error"></p>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -42,7 +51,8 @@
                         <label asp-for="PassportData">Паспортные данные</label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="PassportData" class="form-control" />
+                        <input asp-for="PassportData" class="form-control" name='PassportData' maxlength="20" />
+                        <p id="passportDataError" class="error"></p>
                     </div>
                 </div>
 
@@ -50,11 +60,11 @@
                     <div class="col-8 offset-4 row">
 
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-100" value="Изменить" />
+                            <input type="submit" class="btn w-100" style="background-color: #97a4e5; color:white" value="Изменить" />
                         </div>
                         <br />
                         <div class="col">
-                            <a asp-action="PersonalArea" class="btn btn-success w-100"><i class="fa-solid fa-arrow-right-from-bracket"> &nbsp; </i>Назад</a>
+                            <a asp-action="PersonalArea" class="btn w-100" style="background-color: #97a4e5; color:white"><i class="fa-solid fa-arrow-right-from-bracket"> &nbsp; </i>Назад</a>
                         </div>
                     </div>
                 </div>
@@ -62,3 +72,71 @@
         </div>
     </div>
 </form>
+<script>
+    function validateForm3() {
+        var surnameInput = document.getElementsByName("Surname")[0];
+        var nameInput = document.getElementsByName("Name")[0];
+        var middleNameInput = document.getElementsByName("MiddleName")[0];
+        var passportDataInput = document.getElementsByName("PassportData")[0];
+
+
+        var surnameError = document.getElementById("surnameError");
+        var nameError = document.getElementById("nameError");
+        var middleNameError = document.getElementById("middleNameError");
+        var passportDataError = document.getElementById("passportDataError");
+
+        surnameError.textContent = "";
+        nameError.textContent = "";
+        middleNameError.textContent = "";
+        passportDataError.textContent = "";
+
+
+        var surnamePattern = /^[А-Яа-я]+$/;
+        var namePattern = /^[А-Яа-я]+$/;
+        var middleNamePattern = /^[А-Яа-я]+$/;
+        var passportDataPattern = /^[0-9]+$/;
+
+        if (surnameInput.value.trim() === "") {
+            surnameError.textContent = "Пожалуйста, введите фамилию.";
+            return false;
+        }
+
+        if (!surnamePattern.test(surnameInput.value)) {
+            surnameError.textContent = "Фамилия должна содержать только русские буквы.";
+            return false;
+        }
+
+        if (nameInput.value.trim() === "") {
+            nameError.textContent = "Пожалуйста, введите имя.";
+            return false;
+        }
+
+        if (!namePattern.test(nameInput.value)) {
+            nameError.textContent = "Имя должно содержать только русские буквы.";
+            return false;
+        }
+
+        if (middleNameInput.value.trim() === "") {
+            middleNameError.textContent = "Пожалуйста, введите отчество.";
+            return false;
+        }
+
+        if (!middleNamePattern.test(middleNameInput.value)) {
+            middleNameError.textContent = "Отчество должно содержать только русские буквы.";
+            return false;
+        }
+
+        if (passportDataInput.value.trim() === "") {
+            passportDataError.textContent = "Пожалуйста, введите номер паспорта.";
+            return false;
+        }
+
+        if (passportDataInput.value.length !== 10 || !passportDataPattern.test(passportDataInput.value)) {
+            passportDataError.textContent = "Номер паспорта должен содержать 10 символов и состоять из букв  цифр.";
+            return false;
+        }
+
+ 
+        return true;
+    }
+</script>

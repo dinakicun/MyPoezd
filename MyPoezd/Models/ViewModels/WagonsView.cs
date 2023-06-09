@@ -12,6 +12,8 @@ namespace MyPoezd.Models.ViewModels
         public int TrainId { get; set; }
         public int RouteId { get; set; }
         public int WagonId { get; set; }
+        public int TypeId { get; set; }
+        public int TrainsId { get; set; }
         public string TrainName { get; set; }
         public string WagonName { get; set; }
         public string? DepartureCity { get; set; }

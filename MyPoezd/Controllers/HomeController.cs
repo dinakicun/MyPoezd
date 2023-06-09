@@ -53,21 +53,25 @@ namespace MyPoezd.Controllers
         public IActionResult Login(User user)
         {
             var userModel = _db.Users.Include(x => x.Role).FirstOrDefault(p => p.NumberPhone == user.NumberPhone && p.Password == user.Password);
-            if (userModel is null)
+            if (userModel == null)
             {
-                return RedirectToAction("Error");
+                ViewBag.InvalidCredentialsError = "Неправильный номер телефона или пароль.";
+                return View();
             }
-            var claims = new List<Claim>
+            else
+            {
+                var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, userModel.Role.Name),
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userModel.Id.ToString()),
             };
 
-            var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-            HttpContext.SignInAsync(claimsPrincipal);
-            return RedirectToAction("Index");
+                HttpContext.SignInAsync(claimsPrincipal);
+                return RedirectToAction("Index");
+            }
         }
         public IActionResult Privacy()
         {
@@ -88,12 +92,23 @@ namespace MyPoezd.Controllers
         [HttpPost]
         public IActionResult Registration(User user)
         {
-            user.RoleId = 2;
+            var userModel = _db.Users.Include(x => x.Role).FirstOrDefault(p => p.NumberPhone == user.NumberPhone);
+            if (userModel != null)
+            {
+                ViewBag.InvalidCredentialsError = "Этот номер уже занят";
+                return View();
+            }
+            else
+            {
+                user.RoleId = 2;
 
-            _db.Users.Add(user);
-            _db.SaveChanges();
+                _db.Users.Add(user);
+                _db.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Login");
+            }
+            
+
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -402,6 +417,23 @@ namespace MyPoezd.Controllers
 
             return View(orderVMList);
         }
+        public async Task<IActionResult> Delete(int id)
+        {
+
+            var result = await _db.Tickets.FirstOrDefaultAsync(x => x.Id == id);
+            var placeId = result.PlaceId;
+            var place = await _db.Places.FirstOrDefaultAsync(x => x.Id == placeId);
+            if (place != null)
+            {
+                place.UserId = null;
+                await _db.SaveChangesAsync();
+            }
+            _db.Tickets.Remove(result);
+
+            await _db.SaveChangesAsync();
+            return RedirectToAction("HistoryOrder");
+        }
+
         [HttpGet]
         public async Task<IActionResult> UpdateUser()
         {
@@ -421,7 +453,7 @@ namespace MyPoezd.Controllers
 
             _db.Users.Update(result);
             await _db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("PersonalArea");
         }
     }
 

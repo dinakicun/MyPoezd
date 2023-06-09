@@ -4,12 +4,28 @@
     <div class="border p-3">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
-            <h2 class="text-secondary pl-3">Выберите вагон:</h2>
+            <h2 class=" pl-3">Выберите вагон:</h2>
         </div>
         <div class="row">
             <div class="col-12">
 
                 <style>
+                    .card {
+                        border-radius: 10px;
+                        
+                    }
+
+                    .border {
+                        margin-top: 20px;
+                        border-radius: 10px;
+                        background-color: #97a4e5;
+                    }
+
+                    h2 {
+                        font-family: 'Literata', serif;
+                        color: white;
+                    }
+
                     .vl {
                         border-left: 1px solid grey;
                         height: 100px;
@@ -41,7 +57,7 @@
                                     </div>
                                 </div>
                                 <div class="col-2" style="font-weight: bold; font-size: 20px">
-                                    <a target="_blank" asp-controller="Home" asp-action="Places" asp-route-routeId="@item.RouteId" asp-route-count="@item.CountOfPlaces" asp-route-category="@item.WagonTypeName" asp-route-trainId="@item.TrainId" asp-route-wagonId="@item.WagonId" asp-route-price="@item.Price" style="color:#97a4e5">  Цена: @item.Price </a>
+                                    <a asp-controller="Home" asp-action="Places" asp-route-routeId="@item.RouteId" asp-route-count="@item.CountOfPlaces" asp-route-category="@item.WagonTypeName" asp-route-trainId="@item.TrainId" asp-route-wagonId="@item.WagonId" asp-route-price="@item.Price" style="color:#97a4e5">  Цена: @item.Price </a>
                                 </div>
                                 <div class="row col-12">
                                     <div class="col-2" style="font-weight: bold;color:#c8c8c8; font-size: 12px">@item.DepartureCity -> @item.ArrivalCity </div>

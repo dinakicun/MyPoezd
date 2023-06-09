@@ -48,26 +48,12 @@
 
 @if (User.IsInRole("User"))
 {
-    <div class="col-12 mt-1">
-        <a asp-controller="Home" asp-action="HistoryOrder" class="btn  mx-2" style="background-color:#97a4e5">
-            <i class="fa-solid fa-trash-can"></i> История билетов
-        </a>
-    </div>
+
+
 
     <div class="col-12 mt-1">
         <a asp-controller="Home" asp-action="UpdateUser" class="btn mx-2" style="background-color:#97a4e5">
             <i class="fa-solid fa-trash-can"></i> Изменить личные данные
-        </a>
-    </div>
-    <div class="col-12 mt-1">
-        <a asp-controller="Home" asp-action="UpdatePassword" class="btn mx-2" style="background-color:#97a4e5">
-            <i class="fa-solid fa-trash-can"></i> Изменить пароль
-        </a>
-    </div>
-
-    <div class="col-12 mt-1">
-        <a asp-controller="Home" asp-action="Logout" class="btn mx-2" style="background-color:#97a4e5">
-            <i class="fa-solid fa-trash-can"></i> Выйти
         </a>
     </div>
 @*    <div class="profile1">

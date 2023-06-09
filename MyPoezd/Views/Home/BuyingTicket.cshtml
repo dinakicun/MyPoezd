@@ -4,12 +4,27 @@
     <div class="border p-3">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
-            <h2 class="text-secondary pl-3">Поиск билета</h2>
+            <h2 class="pl-3">Выберите поезд:</h2>
         </div>
         <div class="row">
             <div class="col-12">
 
                 <style>
+                    .card{
+                        
+                        border-radius: 10px;
+
+                    }
+
+                    .border{
+                        margin-top: 20px;
+                        border-radius: 10px;
+                        background-color: #97a4e5;
+                    }
+                    h2{
+                        font-family: 'Literata', serif;
+                        color: white;
+                    }
                     .vl {
                         border-left: 1px solid grey;
                         height: 100px;
@@ -40,7 +55,7 @@
 
                                         <div class="col-1" style="font-size: 14px">Плацкарт</div>
                                         <div class="col-2">
-                                        <a target="_blank" style="text-decoration: none; font-size: 15px; color: #97a4e5; font-weight: bold" asp-controller="Home" asp-action="WagonsList" asp-route-id="@item.Route.Id" asp-route-category="Плацкарт" asp-route-train="@item.Train.Id" asp-route-depcity="@item.DepartureCity" asp-route-arcity="@item.ArrivalCity" asp-route-price=" @item.Route.PriceEconom.ToString()">
+                                        <a style="text-decoration: none; font-size: 15px; color: #97a4e5; font-weight: bold" asp-controller="Home" asp-action="WagonsList" asp-route-id="@item.Route.Id" asp-route-category="Плацкарт" asp-route-train="@item.Train.Id" asp-route-depcity="@item.DepartureCity" asp-route-arcity="@item.ArrivalCity" asp-route-price=" @item.Route.PriceEconom.ToString()">
                                             @item.Route.PriceEconom.ToString("0.00") p.
                                         </a>
                                         </div>
@@ -51,7 +66,7 @@
                                     <div class="col-3" style="font-weight: bold; font-size: 30px;">@item.ArrivalTime</div>
                                     <div class="col-1" style="font-size: 14px">Купе</div>
                                     <div class="col-2">
-                                        <a target="_blank" style="text-decoration: none; font-size: 15px; color: #97a4e5; font-weight: bold" asp-controller="Home" asp-action="WagonsList" asp-route-id="@item.Route.Id" asp-route-category="Купе" asp-route-train="@item.Train.Id" asp-route-price=" @item.Route.PriceCoupe.ToString()" asp-route-depcity="@item.DepartureCity" asp-route-arcity="@item.ArrivalCity">
+                                        <a style="text-decoration: none; font-size: 15px; color: #97a4e5; font-weight: bold" asp-controller="Home" asp-action="WagonsList" asp-route-id="@item.Route.Id" asp-route-category="Купе" asp-route-train="@item.Train.Id" asp-route-price=" @item.Route.PriceCoupe.ToString()" asp-route-depcity="@item.DepartureCity" asp-route-arcity="@item.ArrivalCity">
                                             @item.Route.PriceCoupe.ToString("0.00") p.
                                         </a>
                                     </div>

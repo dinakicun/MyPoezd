@@ -38,24 +38,27 @@ namespace Poezd.Controllers
         [HttpPost]
         public async Task<IActionResult> WagonsCreate(WagonsView wagonsView)
         {
-            //await UsingTrains(wagonsView);
+            await UsingTrains(wagonsView);
 
-            //_db.Wagons.Add(wagonsView.Wagon);
-            //await _db.SaveChangesAsync();
+            _db.Wagons.Add(wagonsView.Wagon);
+            await _db.SaveChangesAsync();
 
             return RedirectToAction("WagonsIndex");
         }
 
         public async Task<WagonsView> UsingTrains(WagonsView wagonsView)
         {
-
+            wagonsView.Wagon.Name = wagonsView.WagonName;
             wagonsView.Wagon.TypeId = await FoundTypeByName(wagonsView.WagonTypeName);
             wagonsView.Wagon.TrainsId = await FoundTrainByName(wagonsView.TrainName);
+            wagonsView.Wagon.Count = wagonsView.CountOfPlaces;
+
             return wagonsView;
         }
         public async Task<int> FoundTrainByName(string name)
         {
             var result = await _db.Trains.Where(x => x.Name == name).FirstOrDefaultAsync();
+            
             return result.Id;
         }
         public async Task<int> FoundTypeByName(string name)
