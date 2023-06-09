@@ -85,9 +85,11 @@ namespace MyPoezd.Controllers
         [HttpGet]
         public IActionResult PersonalArea()
         {
-           
-            return View();
+            User user = _db.Users.FirstOrDefault(); 
+
+            return View(user);
         }
+
 
         [HttpPost]
         public IActionResult Registration(User user)
@@ -455,6 +457,7 @@ namespace MyPoezd.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("PersonalArea");
         }
+
     }
 
 }
